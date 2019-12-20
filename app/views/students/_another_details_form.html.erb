@@ -1,0 +1,87 @@
+<div id="admission1_form" style="width: 90%;">
+  <div class="label-field-pair">
+    <div class="right-column">
+      <div class="text_display">رقم تسجيل الطالب:  <%= @student.registration_no %></div>
+    </div>
+    <div class="left-column"></div>
+  </div>
+  <div class="extender"></div>
+  <div id="admission1_form_vertical_block_left">
+    <span class="span-sub-heading">تفاصيل أخرى</span>
+    <hr class="sub-heading" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_language">اللغة الأم</label>
+        <div class="text-input-bg"><%= f.text_field(:language) %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_other_languages">اللغات الأخرى</label>
+        <div class="text-input-bg"><%= f.text_field(:other_languages)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_religion">الديانة</label>
+        <div class="text-input-bg"><%= f.text_field(:religion)%></div>
+      </div>
+      <div class="left-column">
+        <label for="student_doctrine">المذهب</label>
+        <div class="text-input-bg"><%= f.text_field(:doctrine)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_tallness">الطول (بالمتر)<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.number_field(:tallness,min:140,max:250,step:1)%></div>
+      </div>
+      <div class="left-column">
+        <label for="student_weight">الوزن(بالكيلوغرام)<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.number_field(:weight,min:40,max:180,step:1)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_mother_nationality_id">جنسية الأم<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:mother_nationality)%></div>
+      </div>
+      <div class="left-column">
+        <label for="student_mother_father">اسم والد الأم<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:mother_father)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_mother_grand_father">اسم جد الأم</label>
+        <div class="text-input-bg"><%= f.text_field(:mother_grand_father)%></div>
+      </div>
+      <div class="left-column">
+        <label for="student_mother_tribe">اسم قبيلة الأم</label>
+        <div class="text-input-bg"><%= f.text_field(:mother_tribe)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_mother_grand_father">حالة الخدمة العسكرية</label>
+        <div class="text-input-bg"><%= f.text_field(:military_service)%></div>
+      </div>
+      <div class="left-column">
+        <label for="student_mother_tribe">ملاحظات عن الخدمة العسكرية</label>
+        <div class="text-input-bg"><%= f.text_field(:remark_for_military_service)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_mother_grand_father">شهادة الحالة الجنائية</label>
+        <div class="text-input-bg"><%= f.text_field(:criminal_status)%></div>
+      </div>
+      <div class="left-column">
+      </div>
+    </div>
+  </div>
+</div>

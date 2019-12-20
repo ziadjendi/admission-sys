@@ -1,0 +1,113 @@
+<% @page_title = "ملف التعريف الشخصي" %>
+<script>
+$(document).ready(function() {
+  $(".drop_header").hover(
+    function () {
+      link_off = $(this).offset();
+      link_width = $(this).width();
+      link_height = $(this).height();
+      menu_box = $(this).find(".more-menu-div");
+      box_width = menu_box.width();
+      //  c_b.css({ top: (0 - (child_bottom - main_bottom))});
+      menu_box.css({top: (link_off.top + link_height),left: (link_off.left)});
+      menu_box.css("display","block");
+    },
+    function () {
+      $(this).find(".more-menu-div").css("display","none");
+    });
+  });
+  </script>
+  <div id="content-header">
+    <div class='header-icon student-icon'></div>
+    <h1>معلومات الطالب</h1>
+    <div class='header-sep'>|</div>
+    <div class='sub-header'>التفاصيل</div>
+    <div id="inner-tab-menu">
+      <ul>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("تحرير", edit_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("نموذج الطباعة",profile_student_path(@student) ) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("حذف", delete_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", students_path) %></li>
+        <li class='drop_header themed_bg themed-dark-hover-background'>
+          <a href="#" class="drop_header_link"> &#9660; ملف التعريف الشخصي</a>
+          <ul id="box_1" class="more-menu-div" style="display:none;">
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("شخصي", student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("المعلومات الإضافية", show_another_details_student_path(@student) ) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("تعليمي", show_education_details_student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("ولي اﻷمر", parent_path(@student.parent)) %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="page-yield">
+    <div class="bread_crumb"></div>
+    <div id="employee_profile_heading">
+      <div id="profile_picture_display">
+        <% if @student.photo.nil? %>
+        <%= image_tag('profile_picture_frame.png') %>
+        <% else %>
+        <%= image_tag(@student.photo) %>
+        <% end %>
+      </div>
+      <div id ="employee_main_info">
+        <h3> <%= @student.full_name %>  </h3>
+        <h4> رقم تسجيل الطالب : <%= @student.registration_no %> </h4>
+      </div>
+    </div>
+    <div id="profile-infos">
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >تفاصيل شخصية</span><hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td>الاسم</td><td class="right"><%= @student.name %></td></tr>
+          <tr class="even left"><td >اسم الوالد</td><td class="right"><%= @student.father %></td></tr>
+          <tr class="odd left"><td >اسم الجد</td><td class="right"><%= @student.grand_father %></td></tr>
+          <tr class="even left"><td >اسم العائلة</td><td class="right"><%= @student.last_name %></td></tr>
+          <tr class="odd left"><td >اسم القبيلة</td><td class="right"><%= @student.tribe %></td></tr>
+          <tr class="even left"><td >تاريخ الميلاد</td><td class="right"><%= @student.birth_date %></td></tr>
+          <tr class="odd left"><td >مكان الميلاد</td><td class="right"><%= @student.birth_place %></td></tr>
+          <tr class="even left"><td >الجنسية</td><td class="right"><%= @student.nationality %></td></tr>
+          <tr class="odd left"><td >الحالة الاجتماعية</td><td class="right"><%= @student.marital_status %></td></tr>
+          <tr class="even left"><td >اسم اﻷم الكامل</td><td class="right"><%= @student.full_mother %></td></tr>
+          <tr class="odd left"><td >جنسية الزوجة</td><td class="right"><%= @student.wife_nationality %></td></tr>
+        </tbody>
+      </table>
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >معلومات تعريفية</span> <hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td >رقم جواز السفر</td><td class="right"><%= @student.passport_number %></td></tr>
+          <tr class="even left"><td >تاريخ الاصدار</td><td class="right"><%= @student.passport_issue_date %></td></tr>
+          <tr class="odd left"><td >تاريخ الانتهاء</td><td class="right"><%= @student.passport_expiry_date %></td></tr>
+          <tr class="even left"><td >مكان الاصدار</td><td class="right"><%= @student.passport_country %></td></tr>
+          <tr class="odd left"><td >نوع جواز السفر</td><td class="right"><%= @student.passport_type %></td></tr>
+          <tr class="even left"><td >رقم بطاقة الهوية</td><td class="right"><%= @student.e_id %></td></tr>
+          <tr class="odd left"><td >رقم العائلة</td><td class="right"><%= @student.family_id %></td></tr>
+          <tr class="even left"><td >رقم خلاصة القيد</td><td class="right"><%= @student.family_head_id %></td></tr>
+          <tr class="odd left"><td >اﻹمارة</td><td class="right"><%= @student.emirate_name %></td></tr>
+        </tbody>
+      </table>
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >تفاصيل الاتصال</span> <hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td >اﻹمارة</td><td class="right"><%= @student.home_address_emirate %></td></tr>
+          <tr class="even left"><td >المدينة</td><td class="right"><%= @student.home_address_city %></td></tr>
+          <tr class="odd left"><td >المنطقة السكنية</td><td class="right"><%= @student.home_address_area %></td></tr>
+          <tr class="even left"><td >المنزل</td><td class="right"><%= @student.home_address_building %></td></tr>
+          <tr class="odd left"><td >صندوق البريد</td><td class="right"><%= @student.home_address_pobox %></td></tr>
+          <tr class="even left"><td >هاتف المنزل</td><td class="right"><%= @student.home_address_phone %></td></tr>
+          <tr class="odd left"><td >الهاتف المتحرك 1</td><td class="right"><%= @student.mobile1 %></td></tr>
+          <tr class="even left"><td >الهاتف المتحرك 2</td><td class="right"><%= @student.mobile2 %></td></tr>
+          <tr class="odd left"><td >البريد الإلكتروني</td><td class="right"><%= @student.email %></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

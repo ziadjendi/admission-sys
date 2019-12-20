@@ -1,0 +1,14 @@
+<table summary="batch form fields">
+  <tr>
+    <th>رمز الدفعة</th>
+    <td><%= f.text_field(:code) %></td>
+  </tr>
+  <tr>
+    <th>اسم الدفعة</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+  <th>هل الدفعة نشطة؟</th>
+  <td><%= f.check_box(:is_active) %></td>
+</tr>
+</table>

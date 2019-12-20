@@ -1,0 +1,31 @@
+<div class="parents index">
+  <h2>أولياء اﻷمور</h2>
+<%= link_to("إضافة ولي أمر", new_parent_path , :class => 'action new') %>
+  <table class="listing" summary="parent list">
+    <tr class="header">
+      <th>م</th>
+      <th>الاسم الأول</th>
+      <th>الاسم الثاني</th>
+      <th>صلة القرابة</th>
+      <th>رقم الطالب</th>
+      <th>المهنة</th>
+    </tr>
+    <% @counter =1 %>
+    <% @parents.each do |parent| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= parent.first_name %></td>
+      <td><%= parent.last_name %></td>
+      <td><%= parent.relation %></td>
+      <td><%= parent.student.registration_no %></td>
+      <td><%= parent.occupation %></td>
+      <td class="actions">
+        <%= link_to("عرض", parent_path(parent), :class => 'action show') %>
+        <%= link_to("تحرير", edit_parent_path(parent), :class => 'action edit') %>
+        <%= link_to("حذف", delete_parent_path(parent), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>

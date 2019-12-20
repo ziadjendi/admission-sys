@@ -1,0 +1,42 @@
+<% @page_title = "قائمة المستخدمين" %>
+<div id="content-header">
+  <div class='header-icon user-icon'></div>
+  <h1>المستخدمين</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض جدول بالمستخدمين</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("إضافة مستخدم", new_user_path ) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<div class="users index">
+  <table class="bordered" summary="User list">
+    <thead><tr id="firstrow">
+      <th>م</th>
+      <th>الاسم الكامل</th>
+      <th>اسم المستخدم</th>
+      <th>كلمة السر</th>
+      <th>هل هو موظف؟</th>
+      <th>هل هو طالب؟</th>
+      <th>الوظائف المتاحة</th>
+    </tr></thead>
+    <% @counter =1 %>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= user.full_name %></td>
+      <td><%= user.username %></td>
+      <td><%= user.hashed_password %></td>
+      <td><%= status_tag(user.is_employee) %></td>
+      <td><%= status_tag(user.is_student) %></td>
+      <td><span><%= link_to("عرض", user_path(user)) %></span> | <span><%= link_to("تحرير", edit_user_path(user)) %>
+          </span> | <span><%= link_to("حذف", delete_user_path(user)) %></span>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>
+</div>

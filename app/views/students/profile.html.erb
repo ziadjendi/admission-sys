@@ -1,0 +1,388 @@
+<% @page_title = "بروفايل الطالب"  %>
+<div id="content-header">
+  <div class='header-icon student-icon'></div>
+  <h1>بروفايل الطالب</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>طباعةنموذج المقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("طباعة","javascript:print()") %></li>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< ملف التعريف الشخصي", student_path(@student)) %></li>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", students_path) %></li>
+    </ul>
+  </div>
+</div>
+<br/>
+<div class="student-profile" style="direction: ltr; float: right;" >
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=708 style='width:530.75pt;border-collapse:collapse;border:none' >
+ <tr style='height:58.0pt' id="firstrow">
+  <td width=600 colspan=6 style='width:449.75pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:58.0pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-AE style='font-size:16.0pt;'>طلب التحاق  بالدفعة <%= @student.batch_name %></span>
+  </p>
+  </td>
+  <td width=108 rowspan=2 style='width:81.0pt;border:solid windowtext 1.0pt; border-left:none;background:#F2F2F2;height:58.0pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <img  width=100 height=100 src=" <%= @student.photo.nil? ? image_url('profile_picture_frame.png') : "data:image/png;base64,#{@student.photo}" %>" align=left  hspace=12>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:17.5pt' id="firstrow">
+  <td width=150 style='width:112.4pt;border:solid windowtext 1.0pt;border-top: none;height:17.5pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA >الفرع: <%= @student.edu_section %></span>
+  </p>
+  </td>
+  <td width=150 colspan=2 style='width:112.45pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:17.5pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA >النسبة  المئوية: <%= @student.grades_rate %></span>
+  </p>
+  </td>
+  <td width=150 style='width:112.45pt;border-top:none;border-left:none; border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:17.5pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA >درجة  الاختبار: <%= @student.exam_grade %></span>
+  </p>
+  </td>
+  <td width=150 colspan=2 style='width:112.45pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:17.5pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-AE >رمز السجل: <%= @student.registration_no %> </span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:29.7pt'>
+  <td width=708 colspan=7 style='width:530.75pt;border-top:none;border-left: solid windowtext 2.25pt;border-bottom: solid windowtext 1.5pt;border-right: solid windowtext 2.25pt;background:#F2F2F2; height:29.7pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA style='font-size:14.0pt;font-family:"Arial",sans-serif'>البيانات  الشخصية</span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.1pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >اسم  القبيلة: <%= @student.tribe %></span></p>
+  </td>
+  <td  colspan=3 style='border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم  العائلة: <%= @student.last_name %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الاسم: <%= @student.full_name %> </span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:1.95pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم الأم: <%= @student.full_mother %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم الجد:  <%= @student.grand_father %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم  الوالد: <%= @student.father %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:1.95pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم قبيلة  الأم: <%= @student.mother_tribe %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم جد  الأم: <%= @student.mother_grand_father %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >اسم والد  الأم: <%= @student.mother_father %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:22.0pt'>
+  <td  colspan=2 valign=top style=' border-left:solid windowtext 2.25pt;border-bottom:double windowtext 2.25pt; border-right:solid windowtext 1.0pt;height:22.0pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الطول:  <%= @student.tallness %>سم</span>
+  </p>
+  </td>
+  <td  colspan=3 valign=top style=' border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 1.0pt; height:22.0pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الوزن:  <%= @student.weight %>كغ</span>
+  </p>
+  </td>
+  <td  colspan=2 valign=top style='width:176.95pt;border-top:none; border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:22.0pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >جنسية  الأم: <%= @student.mother_nationality %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.1pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الجنسية:  <%= @student.nationality %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >مكان  الميلاد: <%= @student.birth_place %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >تاريخ  الميلاد: <%= @student.birth_date %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:1.95pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >مكان  الإصدار: <%= @student.passport_country %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >نوع جواز  السفر: <%= @student.passport_type %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >رقم جواز  السفر: </span>
+    <span dir=LTR style='font-size:12.0pt'><%= @student.passport_number %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:1.95pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >رقم خلاصة  القيد: <%= @student.family_head_id %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >تاريخ  الانتهاء: <%= @student.passport_expiry_date %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:1.95pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >تاريخ  الإصدار: <%= @student.passport_issue_date %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:22.9pt'>
+  <td  colspan=2 valign=top style=' border-left:solid windowtext 2.25pt;border-bottom:double windowtext 2.25pt; border-right:solid windowtext 1.0pt;height:22.9pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >رقم  المدينة: <%= @student.home_address_area %></span>
+  </p>
+  </td>
+  <td  colspan=3 valign=top style=' border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 1.0pt; height:22.9pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >رقم  العائلة: <%= @student.family_id %></span>
+  </p>
+  </td>
+  <td  colspan=2 valign=top style='width:176.95pt;border-top:none; border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:22.9pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >رقم بطاقة  الهوية: </span>
+    <span lang=AR-SA style='font-size:10.0pt;font-family:"Arial",sans-serif'><%= @student.e_id %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.65pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الديانة:  <%= @student.religion %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اللغات  الأخرى: <%= @student.other_languages %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-AE >اللغة  الأم: <%= @student.language %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:21.1pt'>
+  <td  colspan=2 valign=top style=' border-left:solid windowtext 2.25pt;border-bottom:double windowtext 2.25pt; border-right:solid windowtext 1.0pt;height:21.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >جنسية  الزوجة: <%= @student.wife_nationality %></span>
+  </p>
+  </td>
+  <td  colspan=3 valign=top style=' border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 1.0pt; height:21.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الحالة  الاجتماعية: <%= @student.marital_status %></span></p>
+  </td>
+  <td  colspan=2 valign=top style='width:176.95pt;border-top:none; border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:21.1pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >المذهب: <%= @student.doctrine %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.65pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >المنطقة السكنية:  <%= @student.home_address_area %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >المدينة: <%= @student.home_address_city %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الإمارة: <%= @student.home_address_emirate %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.65pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >صندوق  بريد: <%= @student.home_address_pobox %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >هاتف  المنزل: <%= @student.home_address_phone %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الهاتف  المتحرك: <%= @student.mobile1 %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:24.7pt'>
+  <td  colspan=2 valign=top style=' border-left:solid windowtext 2.25pt;border-bottom:solid windowtext 2.25pt; border-right:solid windowtext 1.0pt;height:24.7pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >هاتف متحرك  2: <%= @student.mobile2 %></span>
+  </p>
+  </td>
+  <td  colspan=3 valign=top style=' border-left:none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt; height:24.7pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-AE >الهاتف  المتحرك لولي الأمر: <%= @student.parent.mobile %></span>
+  </p>
+  </td>
+  <td  colspan=2 valign=top style='width:176.95pt;border-top:none; border-left:none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:24.7pt'>
+  <p class=MsoNormal dir=RTL style='margin-bottom:0in;margin-bottom:.0001pt;  text-align:right;line-height:normal;direction:rtl;unicode-bidi:embed'>
+    <span  lang=AR-SA >البريد  الإلكتروني: </span>
+    <span dir=LTR style='font-size:12.0pt'><%= @student.email %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:30.15pt'>
+  <td width=708 colspan=7 style='width:530.75pt;border-top:none;border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.5pt;border-right: solid windowtext 2.25pt; background:#F2F2F2; height:30.15pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA style='font-size:14.0pt;font-family:"Arial",sans-serif'>الشهادات  والانجازات</span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.65pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >النسبة المئوية:  <%= @student.grades_rate %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الفرع:  <%= @student.edu_section %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL style='margin-bottom:0in;margin-bottom:.0001pt;  text-align:right;line-height:normal;direction:rtl;unicode-bidi:embed'>
+    <span  lang=AR-SA >سنة الحصول  على الثانوية: <%= @student.year_high_shcool_diploma %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:2.65pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >الكشافة:  <%= @student.scouts %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL style='margin-bottom:0in;margin-bottom:.0001pt;  text-align:right;line-height:normal;direction:rtl;unicode-bidi:embed'>
+    <span  lang=AR-SA >الشرطي  الصغير: <%= @student.kid_cop %></span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:2.65pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم  المدرسة الثانوية: <%= @student.school_name %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:20.45pt'>
+  <td  colspan=7 valign=top style='border-left: solid windowtext 2.25pt; width:530.75pt;border-top:none; border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:20.45pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >الإنجازات:  <%= @student.achievements %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:33.75pt'>
+  <td width=708 colspan=7 style='width:530.75pt;border-top:none;border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.5pt;border-right: solid windowtext 2.25pt;background:#F2F2F2; height:33.75pt'>
+  <p class=MsoNormal align=center dir=RTL style='text-align:center'>
+    <span  lang=AR-SA style='font-size:14.0pt;font-family:"Arial",sans-serif'>بيانات  أخرى</span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:8.4pt'>
+  <td  colspan=2 style='border-left: solid windowtext 2.25pt;border-bottom:solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;height:8.4pt'>
+  <p class=MsoNormal dir=RTL >
+    <span lang=AR-SA >الوظيفة:  <%= @student.parent.occupation %></span>
+  </p>
+  </td>
+  <td  colspan=3 style='border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; height:8.4pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >صلة  القرابة: <%= @student.parent.relation %> </span>
+  </p>
+  </td>
+  <td  colspan=2 style='width:176.95pt;border-top:none;border-left: none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt; height:8.4pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >اسم ولي  الأمر: <%= @student.parent.first_name %> </span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:21.8pt'>
+  <td  colspan=2 valign=top style=' border-left:solid windowtext 2.25pt;border-bottom:double windowtext 2.25pt; border-right:solid windowtext 1.0pt;height:21.8pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >تم فصله من  كليات أخرى؟: <%= @student.fired_from_other_colleges == true ? "نعم" : "لا" %></span>
+</p>
+  </td>
+  <td  colspan=3 valign=top style=' border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 1.0pt; height:21.8pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >شهادة  الحالة الجنائية: <%= @student.criminal_status %></span>
+  </p>
+  </td>
+  <td  colspan=2 valign=top style='width:176.95pt;border-top:none; border-left:none;border-bottom:double windowtext 2.25pt;border-right:solid windowtext 2.25pt; height:21.8pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >مكان  العمل: <%= @student.parent.company %></span>
+  </p>
+  </td>
+ </tr>
+ <tr style='height:10.35pt'>
+  <td width=708 colspan=7 style='width:530.75pt;border:solid windowtext 2.25pt; border-top:none;height:10.35pt'>
+  <p class=MsoNormal dir=RTL >
+    <span  lang=AR-SA >ملاحظات: <%= @student.remarks %></span>
+  </p>
+  </td>
+ </tr>
+ <tr height=0>
+  <td width=150 style='border:none'></td>
+  <td width=86 style='border:none'></td>
+  <td width=64 style='border:none'></td>
+  <td width=150 style='border:none'></td>
+  <td width=22 style='border:none'></td>
+  <td width=128 style='border:none'></td>
+  <td width=108 style='border:none'></td>
+ </tr>
+</table>
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%'>&nbsp;</span></p>
+</div>

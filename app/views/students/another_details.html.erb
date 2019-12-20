@@ -1,0 +1,14 @@
+<% @page_title = "تسجيل طالب" %>
+<div id="content-header">
+  <div class='header-icon student-icon'></div>
+  <h1>تسجيل</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>الخطوة 3 - تفاصيل الطالب</div>
+</div>
+<div id="page-yield">
+  <%= form_for(@student) do |f| %>
+  <%= render(:partial => 'another_details_form', :locals => {:f => f}) %>
+  <%= hidden_field_tag('first_time', true ) %>
+  <div><%= f.submit("حفظ ومتابعة ◄", :class => 'submit_button') %></div>
+  <% end %>
+</div>

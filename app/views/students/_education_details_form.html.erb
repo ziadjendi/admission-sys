@@ -1,0 +1,82 @@
+<div id="admission1_form" style="width: 90%;">
+  <div class="label-field-pair">
+    <div class="right-column">
+      <div class="text_display">رقم تسجيل الطالب:  <%= @student.registration_no %></div>
+    </div>
+    <div class="left-column"></div>
+  </div>
+  <div class="extender"></div>
+  <div id="admission1_form_vertical_block_left">
+    <span class="span-sub-heading">معلومات حول تعليم الطالب</span>
+    <hr class="sub-heading"></hr>
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">سنة الحصول على الثانوية<span class="necessary-field">*</span> </label>
+        <div class="text-input-bg"><%= f.number_field(:year_high_shcool_diploma,min: Time.current.year - 3,max: Time.current.year) %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">الفرع<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:edu_section)%></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">اسم المدرسة الثانوية<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:school_name) %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">هل تم فصله من كليات أخرى؟<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.check_box(:fired_from_other_colleges) %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">المعدل الكامل<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= text_field_tag('totale_rate') %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">معدل الطالب<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= text_field_tag('student_rate') %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <span class="span-sub-heading">معلومات عامة</span>
+    <hr class="sub-heading" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="education_detail_name">الشرطي الصغير</label>
+        <div class="text-input-bg"><%= f.text_field(:kid_cop) %></div>
+      </div>
+      <div class="left-column">
+        <label for="education_detail_relation">الكشافة</label>
+        <div class="text-input-bg"><%= f.text_field(:scouts) %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="education_detail_relation">المنحة الدراسية</label>
+        <div class="text-input-bg"><%= f.text_field(:scholarship) %></div>
+      </div>
+      <div class="left-column"></div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair" style="height: 100px;">
+      <div class="right-column">
+        <label for="education_detail_name">الانجازات</label>
+        <div class="text-input-bg"><%= f.text_area(:achievements) %></div>
+      </div>
+      <div class="left-column"></div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair" style="height: 100px;">
+      <div class="right-column">
+        <label for="education_detail_relation">ملاحظات</label>
+        <div class="text-input-bg"><%= f.text_area(:remarks) %></div>
+      </div>
+      <div class="left-column"></div>
+    </div>
+  </div>
+</div>

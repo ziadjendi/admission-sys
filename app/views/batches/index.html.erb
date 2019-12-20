@@ -1,0 +1,39 @@
+<% @page_title = "الدفعات" %>
+<div id="content-header">
+  <div class='header-icon batches-icon'></div>
+  <h1>الدفعات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض جدول بالدفعات</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("إضافة دفعة", new_batch_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<div class="batches index">
+  <table class="bordered" summary="Batch list">
+    <thead><tr id="firstrow">
+      <th>م</th>
+      <th>رمز الدفعة</th>
+      <th>الدفعة</th>
+      <th>الحالة</th>
+      <th>الوظائف المتاحة</th>
+    </tr></thead>
+    <% @counter =1 %>
+    <% @batches.each do |batch| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= batch.code %></td>
+      <td><%= batch.name %></td>
+      <td><%= status_tag(batch.is_active) %></td>
+      <td><span><%= link_to("عرض", batch_path(batch))%></span> | <span>
+                <%= link_to("تحرير", edit_batch_path(batch)) %></span> | <span>
+                <%= link_to("حذف", delete_batch_path(batch)) %></span>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>
+</div>

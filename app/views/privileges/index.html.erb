@@ -1,0 +1,23 @@
+<div class="privileges index">
+  <h2>الدفعات</h2>
+<%= link_to("إضافة امتياز", new_privilege_path , :class => 'action new') %>
+  <table class="listing" summary="Batch list">
+    <tr class="header">
+      <th>م</th>
+      <th>وصف الامتياز</th>
+    </tr>
+    <% @counter =1 %>
+    <% @privileges.each do |batch| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= privilege.description %></td>
+      <td class="actions">
+        <%= link_to("عرض", privilege_path(privilege), :class => 'action show') %>
+        <%= link_to("تحرير", edit_privilege_path(privilege), :class => 'action edit') %>
+        <%= link_to("حذف", delete_privilege_path(privilege), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>

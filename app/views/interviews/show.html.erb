@@ -1,0 +1,26 @@
+<% @page_title = "عرض تفاصيل المقابلة" %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض تفاصيل المقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", interviews_path(:batch_id => @batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<table summary="iterview detail view">
+  <table width="400">
+    <thead>
+      <th colspan="2"><span >تفاصيل المقابلة</span>  <hr class="sub-heading"/></th>
+    </thead>
+    <tbody>
+      <tr class="odd left"><td>رقم المقابلة</td><td class="right"><%= @interview.code %></td></tr>
+      <tr class="even left"><td>تاريخ المقابلة</td><td class="right"><%= @interview.interview_date.strftime("%H:%M:%S %Y/%m/%d")  %></td></tr>
+      <tr class="odd left"><td>الدفعة</td><td class="right"><%=  @interview.batch.name %></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="label-field-pair">
+  <div class="right-column">
+    <label for="student_grade">رقم المقابلة<span class="necessary-field">*</span> </label>
+    <div class="text-input-bg"><%= f.text_field(:code, style: "width: 240px;") %></div>
+  </div>
+</div>
+<div class="label-field-pair">
+  <div class="right-column">
+    <label for="student_grade">تاريخ المقابلة<span class="necessary-field">*</span></label>
+    <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+      <div class='input-group date' id='interviewDate'>
+        <%= f.text_field(:interview_date , class: "form-control", Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.hidden_field(:batch_id, value: @batch.id) %>

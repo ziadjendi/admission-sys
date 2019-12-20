@@ -1,0 +1,19 @@
+<table summary="user form fields">
+  <tr>
+    <th>الاسم الكامل</th>
+    <td><%= f.text_field(:full_name) %></td>
+  </tr>
+  <tr>
+    <th>اسم المستخدم</th>
+    <td><%= f.text_field(:username) %></td>
+  </tr>
+  <th>كلمة السر</th>
+  <td><%= f.text_field(:hashed_password) %></td>
+</tr>
+<th>هل هو موظف؟</th>
+<td><%= f.check_box(:is_employee) %></td>
+</tr>
+<th>هل هو طالب؟</th>
+<td><%= f.check_box(:is_student) %></td>
+</tr>
+</table>

@@ -1,0 +1,43 @@
+<% @page_title = "استيراد طلاب" %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>استيراد طلاب للمقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", interviews_path(:batch_id => @interview.batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="interviews_students import">
+    <table class="bordered" summary="interview list" style="width:65%;">
+      <thead>
+        <tr id="firstrow"><th>الدفعة</th><td th colspan ="2"><%= @interview.batch.name %></td></tr>
+        <tr id="firstrow">
+          <th style="width:35%;">رقم المقابلة</th>
+          <th style="width:65%;" th colspan ="2">التاريخ</th>
+        </tr>
+      </thead>
+      <tr>
+        <td><%= @interview.code %></td>
+        <td th colspan ="2"><%= @interview.interview_date.strftime("%H:%M:%S %Y/%m/%d") %></td>
+      </tr>
+      <tr id="firstrow">
+        <%= form_tag import_interviews_students_path(:interview_id => @interview.id), multipart: true do %>
+        <td>اختر ملف إكسل لاحقته xlsx.</td><td><%= file_field_tag :file %></td><td><%= submit_tag "استيراد" %></td>
+
+        <% end %>
+      </table>
+      <div class="alert alert-info" style="margin: 10px 0px; ">
+        <strong>ملاحظة: </strong> يجب ان يحتوي ملف اﻹكسل على عمود واحد له عنوان "student_id" والخلايا التي تندرج تحته فيها أرقام تسجيل الطلاب المراد إلحاقهم بالمقابلة المختارة.
+      </div>
+      <div class="alert alert-warning">
+        <strong>تحذير: </strong> إن إعادة استيراد طلاب لمقابلة مختلفة سيؤدي لنقل الطلاب الى المقابلة الجديدة.
+      </div>
+      <div class="alert alert-warning">
+        <strong>تحذير: </strong> إن إعادة استيراد طلاب تم إجراء مقابلة لهم سيؤدي الى نقلهم الى المقابلة الجديدة مع الحفاظ على نتيجة المقابلة السابقة بدون امكانية تحديث نتيجة المقابلة <strong>إلا إذا</strong> كانت نتيجة المقابلة السابقة هي احتياط.
+      </div>
+    </div>
+  </div>

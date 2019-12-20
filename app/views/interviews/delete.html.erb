@@ -1,0 +1,21 @@
+<% @page_title = "حذف مقابلة" %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>حذف المقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", interviews_path(:batch_id => @batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="users new">
+    <%= form_for(@interview, :url => interview_path(@interview,:batch_id => @batch.id), :method => 'delete') do |f| %>
+    <span>هل أنت متأكد من أنك  تريد حذف المقابلة؟</span>
+    <span><%= f.object.code %></span>
+    <div><%= f.submit("حذف المقابلة", :class => 'submit_button') %></div>
+    <% end %>
+  </div>
+</div>

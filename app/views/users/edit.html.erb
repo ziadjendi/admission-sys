@@ -1,0 +1,20 @@
+<% @page_title = "تحديث تفاصيل مستخدم" %>
+<div id="content-header">
+  <div class='header-icon user-icon'></div>
+  <h1>المستخدمين</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>تحديث تفاصيل مستخدم</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", users_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="users edit">
+    <%= form_for(@user) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <div><%= f.submit("حفظ التغييرات", :class => 'submit_button') %></div>
+    <% end %>
+  </div>
+</div>

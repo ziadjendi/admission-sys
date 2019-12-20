@@ -1,0 +1,82 @@
+<%= @page_title = "ملف التعريف الشخصي" %>
+<script>
+$(document).ready(function() {
+  $(".drop_header").hover(
+    function () {
+      link_off = $(this).offset();
+      link_width = $(this).width();
+      link_height = $(this).height();
+      menu_box = $(this).find(".more-menu-div");
+      box_width = menu_box.width();
+      //  c_b.css({ top: (0 - (child_bottom - main_bottom))});
+      menu_box.css({top: (link_off.top + link_height),left: (link_off.left)});
+      menu_box.css("display","block");
+    },
+    function () {
+      $(this).find(".more-menu-div").css("display","none");
+    });
+  });
+  </script>
+  <div id="content-header">
+    <div class='header-icon student-icon'></div>
+    <h1>معلومات الطالب</h1>
+    <div class='header-sep'>|</div>
+    <div class='sub-header'>التفاصيل</div>
+    <div id="inner-tab-menu">
+      <ul>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("تحرير", edit_another_details_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("نموذج الطباعة",profile_student_path(@student) ) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("حذف", delete_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", students_path) %></li>
+        <li class='drop_header themed_bg themed-dark-hover-background'>
+          <a href="#" class="drop_header_link"> &#9660; ملف التعريف الشخصي</a>
+          <ul id="box_1" class="more-menu-div" style="display:none;">
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("شخصي", student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("المعلومات الإضافية", show_another_details_student_path(@student) ) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("تعليمي", show_education_details_student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("ولي اﻷمر", parent_path(@student.parent)) %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div id="page-yield">
+    <div id="employee_profile_heading">
+      <div id="profile_picture_display">
+        <% if @student.photo.nil? %>
+        <%= image_tag('profile_picture_frame.png') %>
+        <% else %>
+        <%= image_tag(@student.photo) %>
+        <% end %>
+      </div>
+      <div id ="employee_main_info">
+        <h3> <%= @student.full_name %>  </h3>
+        <h4> رقم تسجيل الطالب : <%= @student.registration_no %> </h4>
+      </div>
+    </div>
+    <div id="profile-infos">
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >تفاصيل أخرى</span>  <hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td>اللغة اﻷم</td><td class="right"><%= @student.language %></td></tr>
+          <tr class="even left"><td >اللغات اﻷخرى</td><td class="right"><%= @student.other_languages %></td></tr>
+          <tr class="odd left"><td >الديانة</td><td class="right"><%= @student.religion %></td></tr>
+          <tr class="even left"><td >المذهب</td><td class="right"><%= @student.doctrine %></td></tr>
+          <tr class="odd left"><td >الطول</td><td class="right"><%= @student.tallness %></td></tr>
+          <tr class="even left"><td >الوزن</td><td class="right"><%= @student.weight %></td></tr>
+          <tr class="odd left"><td >جنسية الأم</td><td class="right"><%= @student.mother_nationality %></td></tr>
+          <tr class="even left"><td >اسم والد اﻷم</td><td class="right"><%= @student.mother_father %></td></tr>
+          <tr class="odd left"><td >اسم جد اﻷم</td><td class="right"><%= @student.mother_grand_father %></td></tr>
+          <tr class="even left"><td >اسم قبيلة اﻷم</td><td class="right"><%= @student.mother_tribe %></td></tr>
+          <tr class="odd left"><td >حالة الخدمة العسكرية</td><td class="right"><%= @student.military_service %></td></tr>
+          <tr class="even left"><td >ملاحظات عن الخدمةالعسكرية</td><td class="right"><%= @student.remark_for_military_service %></td></tr>
+          <tr class="odd left"><td >شهادة الحالة الجنائية</td><td class="right"><%= @student.criminal_status %></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+    </div>

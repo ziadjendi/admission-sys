@@ -1,0 +1,86 @@
+<%= @page_title = "ملف التعريف الشخصي" %>
+<script>
+$(document).ready(function() {
+  $(".drop_header").hover(
+    function () {
+      link_off = $(this).offset();
+      link_width = $(this).width();
+      link_height = $(this).height();
+      menu_box = $(this).find(".more-menu-div");
+      box_width = menu_box.width();
+      //  c_b.css({ top: (0 - (child_bottom - main_bottom))});
+      menu_box.css({top: (link_off.top + link_height),left: (link_off.left)});
+      menu_box.css("display","block");
+    },
+    function () {
+      $(this).find(".more-menu-div").css("display","none");
+    });
+  });
+  </script>
+  <div id="content-header">
+    <div class='header-icon student-icon'></div>
+    <h1>معلومات الطالب</h1>
+    <div class='header-sep'>|</div>
+    <div class='sub-header'>التفاصيل</div>
+    <div id="inner-tab-menu">
+      <ul>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("تحرير", edit_education_details_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("نموذج الطباعة",profile_student_path(@student) ) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("حذف", delete_student_path(@student)) %></li>
+        <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", students_path) %></li>
+        <li class='drop_header themed_bg themed-dark-hover-background'>
+          <a href="#" class="drop_header_link"> &#9660; ملف التعريف الشخصي</a>
+          <ul id="box_1" class="more-menu-div" style="display:none;">
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("شخصي", student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("المعلومات الإضافية", show_another_details_student_path(@student) ) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("تعليمي", show_education_details_student_path(@student)) %></li>
+            <li class='themed_bg themed-dark-hover-background'><%= link_to("ولي اﻷمر", parent_path(@student.parent)) %></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div id="page-yield">
+    <div id="employee_profile_heading">
+      <div id="profile_picture_display">
+        <% if @student.photo.nil? %>
+        <%= image_tag('profile_picture_frame.png') %>
+        <% else %>
+        <%= image_tag(@student.photo) %>
+        <% end %>
+      </div>
+      <div id ="employee_main_info">
+        <h3> <%= @student.full_name %>  </h3>
+        <h4> رقم تسجيل الطالب : <%= @student.registration_no %> </h4>
+      </div>
+    </div>
+    <div id="profile-infos">
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >معلومات حول تعليم الطالب</span>  <hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td>سنة الحصول على الثانوية</td><td class="right"><%= @student.year_high_shcool_diploma %></td></tr>
+          <tr class="even left"><td >الفرع</td><td class="right"><%= @student.edu_section %></td></tr>
+          <tr class="odd left"><td >اسم المدرسة الثانوية</td><td class="right"><%= @student.school_name %></td></tr>
+          <tr class="even left"><td >المعدل كنسبة مئوية</td><td class="right"><%= @student.grades_rate %></td></tr>
+          <tr class="odd left"><td >هل تم فصله من كليات أخرى؟</td><td class="right"><%= @student.fired_from_other_colleges == true ? "نعم" : "لا" %></td></tr>
+        </tbody>
+      </table>
+      <div class="extender"></div>
+      <table width="700">
+        <thead>
+          <th colspan="2"><span >معلومات عامة</span> <hr class="sub-heading"/></th>
+        </thead>
+        <tbody>
+          <tr class="odd left"><td >الشرطي الصغير</td><td class="right"><%= @student.kid_cop %></td></tr>
+          <tr class="even left"><td >الكشافة</td><td class="right"><%= @student.scouts %></td></tr>
+          <tr class="odd left"><td >المنحة الدراسية</td><td class="right"><%= @student.scholarship %></td></tr>
+          <tr class="even left"><td >الانجازات</td><td class="right"><%= @student.achievements %></td></tr>
+          <tr class="odd left"><td >الملاحظات</td><td class="right"><%= @student.remarks %></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,37 @@
+<% @page_title = "حذف الطالب" %>
+<div id="content-header">
+  <div class='header-icon student-icon'></div>
+  <h1>حذف الطالب</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>تأكيد الحذف</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("العودة للجدول >>", students_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="bread_crumb">
+  </div>
+  <div class="errorExplanation">
+    <%= form_for(@student, :method => 'delete') do |f| %>
+
+      <p >هل أنت متأكد من أنك  تريد حذف هذا الطالب؟</p>
+
+  <%= f.submit("تأكيد الحذف", :class => 'submit_button') %>
+<% end %>
+  </div>
+  <div id="employee_profile_heading">
+    <div id="profile_picture_display">
+      <% if @student.photo.nil? %>
+      <%= image_tag('profile_picture_frame.png') %>
+      <% else %>
+      <%= image_tag(@student.photo) %>
+      <% end %>
+    </div>
+    <div id ="employee_main_info">
+      <h3> <%= @student.full_name %>  </h3>
+      <h4> رقم تسجيل الطالب : <%= @student.registration_no %> </h4>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,30 @@
+<% @page_title = "تحديث البيانات اﻷساسية" %>
+<div id="content-header">
+  <div class='header-icon student-icon'></div>
+  <h1>تسجيل</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>الخطوة 1 - تفاصيل الطالب</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class="themed-dark-hover-background"><a href="#" onclick="Initialize(); /*DisplayFamilyBookData(); */DisplayPublicDataEx();">قراءة بطاقة الهوية</a></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <%= form_for(@student) do |f| %>
+  <%= error_messages_for(f.object) %>
+  <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+  <script type="text/javascript">
+      $(function () {
+        $('#registrationDate').datetimepicker({ locale: 'ar-sa',showTodayButton: true, format: 'YYYY/MM/DD hh:mm:ss', minDate: '2017/01/01 01:00:00', maxDate: '2020/01/01 01:00:00'});
+        $('#birthDate').datetimepicker({ locale: 'ar-sa', format: "YYYY/MM/DD", minDate: '1995/01/01', maxDate: '2007/01/01', useCurrent: false});
+        $('#passportIssueDate').datetimepicker({ locale: 'ar-sa', format: "YYYY/MM/DD", minDate: '2007/01/01', maxDate: moment(), useCurrent: false});
+        $('#passportExpiryDate').datetimepicker({ locale: 'ar-sa', format: "YYYY/MM/DD", minDate: moment(), maxDate: '2030/01/01', useCurrent: false});
+      });
+  </script>
+  <%= hidden_field_tag('first_time', false ) %>
+  <%= hidden_field_tag('updated_part', 'first_step' ) %>
+  <div><%= f.submit("تحديث", :class => 'submit_button') %></div>
+  <% end %>
+</div>

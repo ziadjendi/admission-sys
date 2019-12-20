@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">رقم التسجيل</Data></Cell>
+        <Cell><Data ss:Type="String">تاريخ التسجيل</Data></Cell>
+        <Cell><Data ss:Type="String">الاسم</Data></Cell>
+        <Cell><Data ss:Type="String">اﻷب</Data></Cell>
+        <Cell><Data ss:Type="String">الجد</Data></Cell>
+        <Cell><Data ss:Type="String">العشيرة</Data></Cell>
+        <Cell><Data ss:Type="String">القبيلة</Data></Cell>
+        <Cell><Data ss:Type="String">تاريخ الميلاد</Data></Cell>
+        <Cell><Data ss:Type="String">مكان الميلاد</Data></Cell>
+        <Cell><Data ss:Type="String">الجنسية</Data></Cell>
+        <Cell><Data ss:Type="String">الحالة الاجتماعية</Data></Cell>
+        <Cell><Data ss:Type="String">اسم الأم الكامل</Data></Cell>
+        <Cell><Data ss:Type="String">جنسية الزوجة</Data></Cell>
+        <Cell><Data ss:Type="String">رقم جواز السفر</Data></Cell>
+        <Cell><Data ss:Type="String">تاريخ اصدار جواز السفر</Data></Cell>
+        <Cell><Data ss:Type="String">تاريخ انتهاء جواز السفر</Data></Cell>
+        <Cell><Data ss:Type="String">جهة اصدار جواز السفر</Data></Cell>
+        <Cell><Data ss:Type="String">نوع جواز السفر</Data></Cell>
+        <Cell><Data ss:Type="String">رقم الهوية</Data></Cell>
+        <Cell><Data ss:Type="String">رقم العائلة</Data></Cell>
+        <Cell><Data ss:Type="String">رقم خلاصة القيد</Data></Cell>
+        <Cell><Data ss:Type="String">الإمارة</Data></Cell>
+        <Cell><Data ss:Type="String">اللغة اﻷم</Data></Cell>
+        <Cell><Data ss:Type="String">اللغات اﻷخرى</Data></Cell>
+        <Cell><Data ss:Type="String">الدين</Data></Cell>
+        <Cell><Data ss:Type="String">المذهب</Data></Cell>
+        <Cell><Data ss:Type="String">الطول</Data></Cell>
+        <Cell><Data ss:Type="String">الوزن</Data></Cell>
+        <Cell><Data ss:Type="String">جنسية اﻷم</Data></Cell>
+        <Cell><Data ss:Type="String">قبيلة اﻷم</Data></Cell>
+        <Cell><Data ss:Type="String">اسم جد اﻷم</Data></Cell>
+        <Cell><Data ss:Type="String">اسم والد اﻷم</Data></Cell>
+        <Cell><Data ss:Type="String">سنة التخرج</Data></Cell>
+        <Cell><Data ss:Type="String">الفرع</Data></Cell>
+        <Cell><Data ss:Type="String">اسم المدرسة</Data></Cell>
+        <Cell><Data ss:Type="String">النسبة المئوية</Data></Cell>
+        <Cell><Data ss:Type="String">الانجازات</Data></Cell>
+        <Cell><Data ss:Type="String">الشرطي الصغير</Data></Cell>
+        <Cell><Data ss:Type="String">الكشافة</Data></Cell>
+        <Cell><Data ss:Type="String">المنحة الدراسية</Data></Cell>
+        <Cell><Data ss:Type="String">علامة الامتحان</Data></Cell>
+        <Cell><Data ss:Type="String">الخدمة العسكرية</Data></Cell>
+        <Cell><Data ss:Type="String">ملاحظات عن الخدمة العسكرية</Data></Cell>
+        <Cell><Data ss:Type="String">هل تم فصله من كليات أخرى</Data></Cell>
+        <Cell><Data ss:Type="String">الحالة الجنائية</Data></Cell>
+        <Cell><Data ss:Type="String">الملاحظات العامة</Data></Cell>
+      </Row>
+    <% @students.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= student.registration_no %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.registration_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.father %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.grand_father %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.tribe %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birth_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birth_place %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.nationality %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.marital_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.full_mother %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.wife_nationality %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.passport_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.passport_issue_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.passport_expiry_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.passport_country %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.passport_type %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.e_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.family_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.family_head_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.emirate_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.language %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.other_languages %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.religion %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.doctrine %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.tallness %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.weight %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.mother_nationality %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.mother_tribe %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.mother_grand_father %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.mother_father %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.year_high_shcool_diploma %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.edu_section %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.school_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.grades_rate %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.achievements %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.kid_cop %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.scouts %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.scholarship %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.exam_grade %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.military_service %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.remark_for_military_service %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.fired_from_other_colleges %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.criminal_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.remarks %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -1,0 +1,67 @@
+<% @page_title = "جدول المقابلات" %>
+<% if @interviews.nil? %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>حدد الدفعة</div>
+  <div id="inner-tab-menu">
+    <ul></ul>
+  </div>
+</div>
+<div id="page-yield">
+<%= form_tag(interviews_path, method: "get") do %>
+<div id="autofill-area">
+  <div class="student_admission_date">
+    <label>حدد الدفعة</label>
+    <div class="text-input-bg">
+      <%= select_tag("batch_id", options_for_select(@active_batchs.map {|b| [b.name, b.id]})) %>
+    </div>
+  </div>
+</div>
+<%= submit_tag("عرض") %>
+<% end %>
+</div>
+<% else %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض جدول بالمقابلات</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("إضافة مقابلة", new_interview_path(:batch_id => @batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<div class="interviews index">
+  <table class="bordered" summary="interview list" style="width:65%;">
+    <thead>
+      <tr id="firstrow"><th colspan="2">الدفعة</th><td colspan="2"><%= @batch.name %></td></tr>
+      <tr id="firstrow">
+      <th style="width:10%;">م</th>
+      <th style="width:15%;">رقم المقابلة</th>
+      <th style="width:35%;">التاريخ</th>
+      <th style="width:40%;">الوظائف المتاحة</th>
+    </tr>
+
+  </thead>
+    <% @counter =1 %>
+    <% @interviews.each do |interview| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= interview.code %></td>
+      <td><%= interview.interview_date.strftime("%H:%M:%S %Y/%m/%d") %></td>
+      <td><span ><%= link_to("تحرير", edit_interview_path(interview,:batch_id => @batch.id)) %></span> | <span>
+                <%= link_to("عرض", interviews_students_path(:interview_id => interview.id)) %></span> | <span>
+                <%= link_to("استيراد طلاب", init_import_interviews_students_path(:interview_id => interview.id)) %></span> | <span>
+                <%= link_to("حذف", delete_interview_path(interview,:batch_id => @batch.id)) %></span>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>
+</div>
+<% end %>

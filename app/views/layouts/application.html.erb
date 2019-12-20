@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نظام التسجيل <%= "- " + @page_title || "لوحة التحكم" %></title>
+  <%= stylesheet_link_tag('application', :media =>:screen) %>
+  <%= stylesheet_link_tag('print', :media => :print) %>
+  <%= javascript_include_tag('application') %>
+  <script type="text/javascript">
+  function lower_st_switch(e) {
+    e.stopPropagation();
+    $('.level-1').toggle();
+    $('#up-arrow-img').toggle();
+    $('#lower-profile-link').toggleClass('top-right-link-active');
+    $('.level-1').css('position','fixed');
+    $('#up-arrow-img').removeClass('arrow-img-high');
+    $('#up-arrow-img').addClass('')
+  }
+  </script>
+</head>
+<body>
+  <div id="header_bg">
+    <div id="header_bottom">
+      <div class="header_content">
+        <a href="#"><div id='institution-name'>أكاديمية العلوم الشرطية</div></a>
+        <div class="right-links" id="top-right-links">
+          <a href="#" onClick="lower_st_switch(event);return false;"><div class='top-right-link' id='lower-profile-link'><div id='profile-link-img'></div></div></a>
+          <div class="leg" style="width:40px;clear:both;">
+            <div id="profile-menu">
+              <li class="a">
+                <div id="switch-student">
+                  <div id="up-arrow-img" style="display:none;"></div>
+                  <ul class="level-1" style="display: none; position: fixed;">
+                    <li>
+                      <div class="ns">
+                        <div class="not-selected-list" style="margin-top:5px !important;">
+                          <a href="#">Admin User</a>
+                        </div><br />
+                        <div class="bottom-line"></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="ns">
+                        <div class="not-selected-list" style="margin-bottom:5px !important;"><a href="#">تسجيل الخروج</a></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content_wrapper">
+    <div id="content">
+      <% unless flash[:notice].nil? %>
+      <p class="flash-msg"> <%= flash[:notice] %> </p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="footer_logo">
+      <div id="powered_by">تمكين من قبل  <a href=http://www.bazaarcom.com target="_blank", class="themed_text">Bazaarcom</a></div>
+    </div>
+  </div>
+</body>
+</html>

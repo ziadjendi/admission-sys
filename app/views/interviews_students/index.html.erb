@@ -1,0 +1,117 @@
+<% @page_title = "عرض تفاصيل المقابلة" %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض تفاصيل المقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", interviews_path(:batch_id => @interview.batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <span class="span-sub-heading">تفاصيل المقابلة</span>
+  <hr class="sub-heading"/>
+  <div>
+    <div style="float:right; width: 25%;">
+  <table width="400">
+    <tbody>
+      <tr class="odd left"><td>رقم المقابلة</td><td class="right"><%= @interview.code %></td></tr>
+      <tr class="even left"><td>تاريخ المقابلة</td><td class="right"><%= @interview.interview_date.strftime("%H:%M:%S %Y/%m/%d")  %></td></tr>
+      <tr class="odd left"><td>الدفعة</td><td class="right"><%=  @interview.batch.name %></td></tr>
+    </tbody>
+  </table>
+</div>
+<div style="float: left; width: 75%;">
+  <div class="panel panel-primary">
+      <div class="panel-heading">الإحصائيات</div>
+      <div class="panel-body">
+        <div id="counters">
+          <span class="label label-primary" style="">عدد الطلاب المسجلين: <%= @registerd %></span>
+          <span class="label label-success" style="">عددالطلاب المقبولين: <%= @accepted %> </span>
+          <span class="label label-danger" style="">عدد الطلاب المرفوضين: <%= @refused %></span>
+          <span class="label label-warning"style="">عدد الطلاب الاحتياط: <%= @reserved %></span>
+          <span class="label label-info"style="">عدد الطلاب بالانتظار: <%= @standby %></span>
+        </div>
+        <div class="progress">
+         <div class="progress-bar progress-bar-info" role="progressbar" style="width:<%= @standby_percent %>%">
+         %<%= @standby_percent %>  بالانتظار
+         </div>
+         <div class="progress-bar progress-bar-warning" role="progressbar" style="width:<%= @reserved_percent %>%">
+          %<%= @reserved_percent %> بالاحتياط
+         </div>
+         <div class="progress-bar progress-bar-danger" role="progressbar" style="width:<%= @refused_percent %>%">
+           %<%= @refused_percent %> المرفوض
+         </div>
+         <div class="progress-bar progress-bar-success" role="progressbar" style="width:<%= @accepted_percent %>%">
+           %<%= @accepted_percent %> المقبول
+         </div>
+       </div>
+       <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:<%= @total_percent %>%">
+          %<%= @total_percent %> الاجمالي
+        </div>
+      </div>
+      </div>
+    </div>
+
+</div>
+</div>
+  <div class="extender"></div>
+  <span class="span-sub-heading">طلاب المقابلة</span>
+  <hr class="sub-heading"/>
+  <div class="alert alert-info">
+    <strong>ملاحظة: </strong> انقر على اسم الطالب لعرض ملف التعريف الشخصي للطالب.
+  </div>
+  <table class="bordered" summary="interview_students list" style="width:100%;">
+    <thead>
+      <tr id="firstrow">
+        <th style="width:5%;">م</th>
+        <th style="width:5%;">رقم التسجيل</th>
+        <th style="width:35%;">الاسم الكامل</th>
+        <th style="width:15%;">الموبايل 1</th>
+        <th style="width:30%;">النتيجة</th>
+        <th style="width:15%;">الوظائف المتاحة</th>
+      </tr>
+    </thead>
+    <% @counter =1 %>
+    <% @interview_students.each do |interview_student| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= interview_student.student.registration_no %></td>
+      <td><%= link_to(interview_student.student.full_name,profile_student_path(interview_student.student, :interview_id => @interview.id) ) %></td>
+      <td><%= interview_student.student.mobile1 %></td>
+      <% if interview_student.result.nil? %>
+      <td>
+        <%= form_for(interview_student,:url => interviews_student_path(interview_student,:interview_id => interview_student.interview_id)) do |f| %>
+        <%= error_messages_for(f.object) %>
+        <div class="btn-group btn-group-justified">
+          <div class="btn-group">
+            <%= f.radio_button(:result,"مقبول") %>
+            <%= f.label(:result,"مقبول") %>
+          </div>
+          <div class="btn-group">
+            <%= f.radio_button(:result,"مرفوض") %>
+            <%= f.label(:result,"مرفوض") %>
+          </div>
+          <div class="btn-group">
+            <%= f.radio_button(:result,"احتياط") %>
+            <%= f.label(:result,"احتياط") %>
+          </div>  </div>
+        </td>
+        <% end%>
+        <% else %>
+        <td><%= interview_student.result %>  </td>
+        <% end %>
+        <td>
+          <% if interview_student.result.nil? %>
+          <span><%= link_to "تحديث النتيجة","#",:onclick => "$('#edit_interviews_student_#{interview_student.id}').submit()" %></span> |
+          <% end %>
+          <span><%= link_to("حذف", delete_interviews_student_path(interview_student, :interview_id => @interview.id)) %></span>
+        </td>
+      </tr>
+      <% @counter += 1 %>
+      <% end %>
+    </table>
+</div>

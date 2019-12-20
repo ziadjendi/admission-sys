@@ -1,0 +1,33 @@
+<div class="candidates index">
+  <h2>الطلاب المرشحين</h2>
+<%= link_to("ترشيح طالب", new_candidate_path , :class => 'action new') %>
+  <table class="listing" summary="candidate list">
+    <tr class="header">
+      <th>م</th>
+      <th>رقم الطالب</th>
+      <th>نتيجة الفحص الطبي</th>
+      <th>نتيجة الفحص الرياضي</th>
+      <th>مرشح أساسي</th>
+      <th>مرشح احتياط</th>
+      <th>مرشح للبعثة</th>
+    </tr>
+    <% @counter =1 %>
+    <% @candidates.each do |candidate| %>
+    <tr>
+      <td><%= @counter %></td>
+      <td><%= candidate.student.registration_no %></td>
+      <td><%= candidate.medical_test_result %></td>
+      <td><%= candidate.sport_test_result %></td>
+      <td><%= candidate.is_key_student ? 'نعم' : 'لا' %></td>
+      <td><%= candidate.is_reserve_student ? 'نعم' : 'لا' %></td>
+      <td><%= candidate.is_scholarship_student ? 'نعم' : 'لا' %></td>
+      <td class="actions">
+        <%= link_to("عرض", candidate_path(candidate), :class => 'action show') %>
+        <%= link_to("تحرير", edit_candidate_path(candidate), :class => 'action edit') %>
+        <%= link_to("حذف", delete_candidate_path(candidate), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% @counter += 1 %>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+<% @page_title = "إنشاء مقابلة" %>
+<div id="content-header">
+  <div class='header-icon hr-icon'></div>
+  <h1>المقابلات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>إنشاء مقابلة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", interviews_path(:batch_id => @batch.id)) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="iterviews new">
+    <%= form_for(@interview, :url =>interviews_path(:batch_id => @batch.id)) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <script type="text/javascript">
+        $(function () {
+            $('#interviewDate').datetimepicker({ locale: 'ar-sa',format: "YYYY/MM/DD hh:mm:ss",minDate: moment(),maxDate:'2020/01/01 01:00:00' });
+        });
+    </script>
+    <div><%= f.submit("إنشاء مقابلة", :class => 'submit_button') %></div>
+    <% end %>
+  </div>
+</div>

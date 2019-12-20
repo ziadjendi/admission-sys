@@ -1,0 +1,40 @@
+<%= link_to("العودة للجدول >>", candidates_path, :class => 'back-link') %>
+<div class="candidates show">
+  <h2>Show candidate</h2>
+
+  <table summary="candidate detail view">
+    <tr>
+      <th>رقم الطالب</th>
+      <td><%= @candidate.interviews_student.student.registration_no %></td>
+    </tr>
+    <tr>
+      <th>نتيجة الفحص الطبي</th>
+      <td><%= @candidate.medical_test_result %></td>
+    </tr>
+    <tr>
+      <th>سبب نتيجة الفحص الطبي</th>
+      <td><%= @candidate.medical_reason %></td>
+    </tr>
+    <tr>
+      <th>وثيقة الفحص الطبي</th>
+      <td><%= @candidate.medical_doc %></td>
+    </tr>
+    <tr>
+      <th>نتيجة الاختبار الرياضي</th>
+      <td><%= @candidate.sport_test_result %></td>
+    </tr>
+    <tr>
+      <th>مرشح أساسي</th>
+      <td><%= @candidate.is_key_student? 'نعم' : 'لا' %></td>
+    </tr>
+    <tr>
+      <th>مرشح احتياطي</th>
+      <td><%= @candidate.is_reserve_student? 'نعم' : 'لا' %></td>
+    </tr>
+    <tr>
+      <th>مرشح للبعثة</th>
+      <td><%= @candidate.is_scholarship_student? 'نعم' : 'لا' %></td>
+    </tr>
+  </table>
+
+</div>

@@ -1,0 +1,21 @@
+<% @page_title = "حذف مستخدم" %>
+<div id="content-header">
+  <div class='header-icon user-icon'></div>
+  <h1>المستخدمين</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>حذف المستخدم</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", users_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+  <div class="users delete">
+    <%= form_for(@user, :method => 'delete') do |f| %>
+      <span>هل أنت متأكد من أنك  تريد حذف هذا المستخدم؟</span>
+      <span><%= f.object.full_name %></span>
+      <div><%= f.submit("حذف المستخدم", :class => 'submit_button') %></div>
+    <% end %>
+  </div>
+</div>

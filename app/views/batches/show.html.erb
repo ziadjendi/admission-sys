@@ -1,0 +1,26 @@
+<% @page_title = "عرض تفاصيل الدفعة" %>
+<div id="content-header">
+  <div class='header-icon batches-icon'></div>
+  <h1>الدفعات</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض تفاصيل الدفعة</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", batches_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<div class="batches show">
+  <table width="400">
+    <thead>
+      <th colspan="2"><span >تفاصيل الدفعة</span>  <hr class="sub-heading"/></th>
+    </thead>
+    <tbody>
+      <tr class="odd left"><td>رمز الدفعة</td><td class="right"><%= @batch.code %></td></tr>
+      <tr class="even left"><td>اسم الدفعة</td><td class="right"><%= @batch.name %></td></tr>
+      <tr class="odd left"><td>هل الدفعة نشطة؟</td><td class="right"><%=  status_tag(@batch.is_active) %></td></tr>
+    </tbody>
+  </table>
+</div>
+</div>

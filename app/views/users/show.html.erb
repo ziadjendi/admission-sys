@@ -1,0 +1,28 @@
+<% @page_title = "عرض تفاصيل المستخدم" %>
+<div id="content-header">
+  <div class='header-icon user-icon'></div>
+  <h1>المستخدمين</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>عرض تفاصيل المستخدم</div>
+  <div id="inner-tab-menu">
+    <ul>
+      <li class='themed_bg themed-dark-hover-background'><%= link_to("<< العودة للجدول", users_path) %></li>
+    </ul>
+  </div>
+</div>
+<div id="page-yield">
+<table summary="user detail view">
+  <table width="400">
+    <thead>
+      <th colspan="2"><span >تفاصيل المستخدم</span>  <hr class="sub-heading"/></th>
+    </thead>
+    <tbody>
+      <tr class="odd left"><td>الاسم الكامل</td><td class="right"><%= @user.full_name %></td></tr>
+      <tr class="even left"><td>اسم المستخدم</td><td class="right"><%= @user.username %></td></tr>
+      <tr class="odd left"><td>كلمة السر</td><td class="right"><%=  @user.hashed_password %></td></tr>
+      <tr class="even left"><td>هل هو موظف؟</td><td class="right"><%= status_tag(@user.is_employee) %></td></tr>
+      <tr class="odd left"><td>هل هو طالب؟</td><td class="right"><%= status_tag(@user.is_student) %></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>

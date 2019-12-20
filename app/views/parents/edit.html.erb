@@ -1,0 +1,145 @@
+<% @page_title = "تفاصيل ولي اﻷمر" %>
+<div id="content-header">
+  <div class='header-icon student-icon'></div>
+  <h1>تسجيل</h1>
+  <div class='header-sep'>|</div>
+  <div class='sub-header'>الخطوة 2 - تفاصيل الطالب</div>
+</div>
+<div id="page-yield">
+<%= form_for(@parent) do |f| %>
+  <div id="admission1_form" style="width: 90%;">
+    <div class="label-field-pair">
+      <div class="right-column">
+        <div class="text_display">رقم تسجيل الطالب:  <%= @parent.student.registration_no %></div>
+      </div>
+      <div class="left-column"></div>
+    </div>
+    <div class="extender"></div>
+    <div id="admission1_form_vertical_block_left">
+      <span class="span-sub-heading">ولي الأمر - تفاصيل شخصية</span>
+      <hr class="sub-heading"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_name">الاسم الأول<span class="necessary-field">*</span></label>
+          <div class="text-input-bg"><%= f.text_field(:first_name) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_name">الاسم الأخير</label>
+          <div class="text-input-bg"><%= f.text_field(:last_name) %></div>
+        </div>
+      </div>
+      <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_relation">علاقة<span class="necessary-field">*</span></label>
+          <div class="text-input-bg"><%= f.text_field(:relation) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_dob">تاريخ الميلاد</label>
+          <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+          <div class="input-group date" id="dobParent" >
+          <%= f.text_field(:dob ,class: "form-control",Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+            $('#dobParent').datetimepicker({ locale: 'ar-sa',format: "YYYY/MM/DD",maxDate:'1987/01/01',defaultDate:moment().subtract(40,'years').calendar() });
+          });
+      </script>
+        </div>
+      </div>
+      <hr class="label-underline" />
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_education">تعليم</label>
+          <div class="text-input-bg"><%= f.text_field(:education) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_occupation">وظيفة</label>
+          <div class="text-input-bg"><%= f.text_field(:occupation) %></div>
+        </div>
+      </div>
+      <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_income">الدخل</label>
+          <div class="text-input-bg"><%= f.text_field(:incom) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_income">مكان العمل</label>
+          <div class="text-input-bg"><%= f.text_field(:company) %></div>
+        </div>
+      </div>
+        <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_income">الأقرباء بسلك الشرطة</label>
+          <div class="text-input-bg"><%= f.text_field(:police_relatives) %></div>
+        </div>
+        <div class="left-column"></div>
+      </div>
+      <div class="extender"></div>
+      <span class="span-sub-heading">ولي الأمر - تفاصيل الاتصال</span>
+      <hr class="sub-heading"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_country">دولة</label>
+          <div class="text-input-bg"><%= f.text_field(:country) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_state">الإمارة</label>
+          <div class="text-input-bg"><%= f.text_field(:state) %></div>
+        </div>
+      </div>
+      <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_city">المدينة</label>
+          <div class="text-input-bg"><%= f.text_field(:city) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_email">البريد الإلكتروني</label>
+          <div class="text-input-bg"><%= f.text_field(:email) %></div>
+        </div>
+      </div>
+      <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="guardian_address_line1">سطر العنوان 1</label>
+          <div class="text-input-bg"><%= f.text_field(:address_line1) %></div>
+        </div>
+        <div class="left-column">
+          <label for="guardian_address_line2">سطر العنوان 2</label>
+          <div class="text-input-bg"><%= f.text_field(:address_line2) %></div>
+        </div>
+      </div>
+      <hr class="label-underline"/>
+      <div class="label-field-pair">
+        <div class="right-column">
+          <label for="parent_detail_office_phone1">هاتف 1</label>
+          <div class="text-input-bg"><%= f.text_field(:phone1) %></div>
+        </div>
+        <div class="left-column">
+          <label for="parent_detail_office_phone2">هاتف 2</label>
+          <div class="text-input-bg"><%= f.text_field(:phone2) %></div>
+        </div>
+      </div>
+      <hr class="label-underline">
+      <div class="label-field-pair"/>
+        <div class="right-column">
+      <label for="parent_detail_mob_phone">الهاتف المحمول</label>
+      <div class="text-input-bg"><%= f.text_field(:mobile) %></div>
+    </div>
+    <div class="left-column"></div>
+    </div>
+    <hr class="label-underline"/>
+
+
+  <div><%= f.submit("حفظ ومتابعة ◄", :class => 'submit_button') %></div>
+  <% end %>
+    </div>
+</div>
+</div>

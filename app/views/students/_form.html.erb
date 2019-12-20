@@ -1,0 +1,224 @@
+<%= javascript_include_tag('eid') %>
+<div id="admission1_form" style="width: 90%;">
+  <div id="necessary-field-notification"> الحقول المميزة بـ <span class="necessary-field">*</span> يجب تعبئتها</div>
+  <div class="label-field-pair">
+    <div class="right-column">
+      <label for="student_registration_date">الدفعة<span class="necessary-field">*</span></label>
+      <div class="text-input-bg"><%= f.select(:batch_id, @active_batchs.map {|b| [b.name, b.id]}) %></div>
+    </div>
+    <div class="left-column">
+      <label for="student_registration_date">تاريخ التسجيل<span class="necessary-field">*</span></label>
+      <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+      <div class="input-group date" id="registrationDate" >
+      <%= f.text_field(:registration_date ,class: "form-control",Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div id="admission1_form_vertical_block_left">
+    <span class="span-sub-heading">تفاصيل شخصية</span>
+    <hr class="sub-heading" />
+    <div style="float:left;">
+      <%= f.hidden_field(:photo) %>
+      <figure style="margin-right:-150px; position:absolute; z-index:3;">
+        <img id="student_show_photo" src="<%= image_url('profile_picture_frame.png') %>" />
+        <figcaption style="color: #444; font-size: 14px; font-weight: 600; text-align:center; margin-top:10px;">الصورة الشخصية</figcaption>
+      </figure>
+    </div>
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">الاسم<span class="necessary-field">*</span> </label>
+        <div class="text-input-bg"><%= f.text_field(:name,id: "FamilyHead_FirstName_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">اسم الوالد<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:father,id:"FamilyHead_FatherName_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">اسم الجد<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:grand_father,id:"FamilyHead_GrandFatherName_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">اسم العائلة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:last_name,id:"FamilyHead_Clan_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">اسم القبيلة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:tribe,id:"FamilyHead_Tribe_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_date_of_birth"> تاريخ ميلاد<span class="necessary-field">*</span> </label>
+        <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+        <div class="input-group date" id="birthDate">
+        <%= f.text_field(:birth_date, id:"FamilyHead_DateOfBirth_PDLabel",placeholder: "YYYY/MM/DD", class: "form-control",Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_birth_place">مكان ميلاد<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:birth_place,id:"FamilyHead_PlaceOfBirth_Ar_PDLabel" ) %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_nationality">الجنسية<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:nationality,id:"FamilyHead_Nationality_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_category">الحالة الاجتماعية<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:marital_status,id:"MaritalStatus_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="full_mother">اسم الأم الكامل<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:full_mother,id:"MotherFullName_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_wife_nationality">جنسية الزوجة</label>
+        <div class="text-input-bg"><%= f.text_field(:wife_nationality,id:"Wife_Nationality_Ar_PDLabel") %></div>
+      </div>
+    </div>
+  </div>
+  <div id="admission1_form_vertical_block_left">
+    <span class="span-sub-heading">معلومات تعريفية</span>
+    <hr class="sub-heading" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">رقم جواز السفر<span class="necessary-field">*</span> </label>
+        <div class="text-input-bg"><%= f.text_field(:passport_number,id:"PassportNumber_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">تاريخ الاصدار<span class="necessary-field">*</span></label>
+        <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+        <div class="input-group date" id="passportIssueDate">
+          <%= f.text_field(:passport_issue_date, id:"PassportIssueDate_PDLabel",placeholder: "YYYY/MM/DD", class: "form-control",Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">تاريخ الانتهاء<span class="necessary-field">*</span></label>
+        <div class="text-input-bg" style="direction: ltr; margin: 0 10px 0 0;">
+        <div class="input-group date" id="passportExpiryDate">
+          <%= f.text_field(:passport_expiry_date,id:"PassportExpiryDate_PDLabel",placeholder: "YYYY/MM/DD", class: "form-control",Onkeydown: "return false;", style: "width: 200px;margin: 0;") %>
+
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">مكان الاصدار<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:passport_country,id:"PassportCountryDesc_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_category">نوع جواز السفر<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:passport_type,id:"PassportType_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">رقم بطاقة الهوية<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:e_id,id:"IDNumber_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">رقم العائلة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:family_id,id:"FamilyHead_FamilyID_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">رقم خلاصة القيد<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:family_head_id,id:"FamilyHead_IDN_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_grade">الإمارة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:emirate_name,id:"FamilyHead_EmirateName_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column"></div>
+    </div>
+  </div>
+  <div id="admission1_form_vertical_block_left">
+    <span class="span-sub-heading">تفاصيل الاتصال</span>
+    <hr class="sub-heading" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_home_address_emirate">الإمارة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_emirate,id:"HomeAddress_EmirateDesc_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_home_address_city">المدينة<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_city,id:"HomeAddress_CityDesc_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_home_address_area">المنطقة السكنية</label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_area,id:"HomeAddress_AreaDesc_Ar_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">المنزل</label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_building,id:"HomeAddress_Building_Ar_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_home_address_pobox">صندوق البريد</label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_pobox,id:"HomeAddress_POBox_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_grade">هاتف المنزل<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:home_address_phone,id:"HomeAddress_ResidentPhoneNumber_PDLabel") %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_mobile1">الهاتف المتحرك 1<span class="necessary-field">*</span></label>
+        <div class="text-input-bg"><%= f.text_field(:mobile1,id:"HomeAddress_MobilePhoneNumber_PDLabel") %></div>
+      </div>
+      <div class="left-column">
+        <label for="student_mobile2">الهاتف المتحرك 2</label>
+        <div class="text-input-bg"><%= f.text_field(:mobile2) %></div>
+      </div>
+    </div>
+    <hr class="label-underline" />
+    <div class="label-field-pair">
+      <div class="right-column">
+        <label for="student_email">البريد الإلكتروني</label>
+        <div class="text-input-bg"><%= f.text_field(:email,id:"HomeAddress_Email_PDLabel") %></div>
+      </div>
+    </div>
+  </div>
+</div>
